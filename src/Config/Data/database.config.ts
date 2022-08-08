@@ -4,7 +4,7 @@ import {
   DATA_PASSWORD,
   DATA_PORT,
   DATA_USERNAME
-} from 'src/Constant/Environment/data'
+} from 'src/constant/Environment/data.constant'
 import { DataSourceOptions } from 'typeorm'
 export const configData: DataSourceOptions = {
   type: 'mysql',

@@ -1,4 +1,4 @@
-import { configData } from 'src/Config/Data/database.config'
+import { configData } from 'src/config/data/database.config'
 import { DataSource } from 'typeorm'
 
 export const databaseProvider = [

@@ -14,7 +14,7 @@ export const configData: DataSourceOptions = {
   password: DATA_PASSWORD,
   database: DATA_DATABASENAME,
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
   subscribers: [],
   migrations: []

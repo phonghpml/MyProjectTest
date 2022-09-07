@@ -7,8 +7,8 @@ export class User {
   username: string
   @Column()
   password: string
-  @Column()
-  email: string
+  @Column({ nullable: true })
+  email?: string
   @Column()
   phoneNumber: string
 }

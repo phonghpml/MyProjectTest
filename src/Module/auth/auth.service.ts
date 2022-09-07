@@ -10,21 +10,17 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.userService.userRepository.findOne({
-      where: {
-        username: username
-      }
-    })
+    const user = await this.userService.getUser(username)
     console.log('user...............', user)
     if (user && user.password === pass) {
-      const { password, ...result } = user
-      return result
+      throw new Error('user and password is not correct')
     }
     return null
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId }
+  async login(username: string, password: string) {
+    await this.validateUser(username, password)
+    const payload = { username: username }
     return {
       access_token: this.jwtService.sign(payload)
     }

@@ -11,11 +11,11 @@ export class UserService {
     private usersRepository: Repository<User>
   ) {}
   async getUser(username: string) {
-    return this.usersRepository.find({
+    return this.usersRepository.findOne({
       where: {
         username: username
       }
-    })[0]
+    })
   }
   async createOneUser(user: UserInput): Promise<User> {
     const createUser = this.usersRepository.create(user)

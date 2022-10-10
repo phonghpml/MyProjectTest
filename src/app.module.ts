@@ -5,7 +5,6 @@ import { AppService } from './app.service'
 import { AuthModule } from './module/auth/auth.module'
 import { UserModule } from './module/user/user.module'
 import { configData } from './config/data/database.config'
-import { DataSource } from 'typeorm'
 
 @Module({
   imports: [TypeOrmModule.forRoot(configData), UserModule, AuthModule],

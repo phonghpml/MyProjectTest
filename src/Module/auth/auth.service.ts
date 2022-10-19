@@ -14,12 +14,20 @@ export class AuthService {
     const user: User = await this.userService.getUser(username)
     console.log('user...............', user)
     if (!user) {
-      throw new Error('user is not correct')
+      return {
+        status: 'error',
+        data: null /* or optional error payload */,
+        message: 'username is not correct'
+      }
     }
     if (user && user.password != pass) {
       console.log(pass)
       console.log(user.password)
-      throw new Error('password is not correct')
+      return {
+        status: 'error',
+        data: null /* or optional error payload */,
+        message: 'password is not correct'
+      }
     }
     return null
   }

@@ -12,7 +12,7 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user: User = await this.userService.getUser(username)
-    console.log('user...............', user)
+    // console.log('user...............', user)
     if (!user) {
       return {
         status: 'error',
@@ -21,8 +21,6 @@ export class AuthService {
       }
     }
     if (user && user.password != pass) {
-      console.log(pass)
-      console.log(user.password)
       return {
         status: 'error',
         data: null /* or optional error payload */,

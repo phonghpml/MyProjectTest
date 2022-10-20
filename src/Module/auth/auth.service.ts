@@ -27,14 +27,17 @@ export class AuthService {
         message: 'password is not correct'
       }
     }
-    return null
   }
 
   async login(username: string, password: string) {
     await this.validateUser(username, password)
     const payload = { username: username }
     return {
-      access_token: this.jwtService.sign(payload)
+      status: 'success',
+      data: {
+        access_token: this.jwtService.sign(payload)
+      },
+      message: null
     }
   }
 }

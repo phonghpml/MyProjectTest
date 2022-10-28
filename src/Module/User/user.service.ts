@@ -11,11 +11,12 @@ export class UserService {
     private usersRepository: Repository<User>
   ) {}
   async getUser(username: string) {
-    return this.usersRepository.findOne({
+    const user = await this.usersRepository.findOne({
       where: {
         username: username
       }
     })
+    return user
   }
   async createOneUser(user: UserInput): Promise<User> {
     const createUser = this.usersRepository.create(user)

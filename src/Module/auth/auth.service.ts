@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt'
 import { readFile, readFileSync } from 'fs'
 import path from 'path'
 
-import { User } from '../user/user.entity'
+import { User } from '../user/user.schema'
 import { UserService } from '../user/user.service'
 
 @Injectable()
@@ -25,10 +25,6 @@ export class AuthService {
 
   async login(username: string, password: string) {
     try {
-      const fileUrl = path.join(__dirname)
-
-      const dataReadFile = readFileSync('/test.txt')
-      console.log('dataReadFile.............', dataReadFile)
       await this.validateUser(username, password)
       const payload = { username: username }
       return {

@@ -6,7 +6,7 @@ import {
   DATA_PORT,
   DATA_USERNAME
 } from 'src/constant/Environment/data.constant'
-import { User } from 'src/module/user/user.entity'
+import { User } from 'src/module/user/user.schema'
 export const configData: TypeOrmModuleOptions = {
   type: 'mysql',
   host: DATA_HOST,

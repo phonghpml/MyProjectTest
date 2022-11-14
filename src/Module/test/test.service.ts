@@ -25,9 +25,6 @@ export class TestService {
     })
     sheet.addImage(imageId1, 'A1:A1')
     sheet.getRow(2).height = 60
-    console.log(imageId1)
-    await workbook.xlsx.writeFile(
-      `D:\/MyGitHub\/BackEndTest\/NestJsTest\/MyProjectTest\/export\/excels\\${filename}`
-    )
+    await workbook.xlsx.writeFile(`${process.cwd()}/export/excels\/${filename}`)
   }
 }

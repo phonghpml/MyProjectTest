@@ -1,15 +1,22 @@
 import { Module } from '@nestjs/common'
-import { TypeOrmModule } from '@nestjs/typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './module/auth/auth.module'
 import { UserModule } from './module/user/user.module'
-import { configData } from './config/data/database.config'
 import { TestModule } from './module/test/test.module'
-
+import { MongooseModule } from '@nestjs/mongoose'
 @Module({
   imports: [
-    TypeOrmModule.forRoot(configData),
+    // TypeOrmModule.forRoot(configData),
+    MongooseModule.forRoot(
+      `mongodb+srv://cluster0.r52erkw.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority`,
+      {
+        ssl: true,
+        sslValidate: true,
+        sslKey: `${process.cwd()}/X509-cert-5956132687475728034.pem`,
+        sslCert: `${process.cwd()}/X509-cert-5956132687475728034.pem`
+      }
+    ),
     UserModule,
     AuthModule,
     TestModule
@@ -17,8 +24,4 @@ import { TestModule } from './module/test/test.module'
   controllers: [AppController],
   providers: [AppService]
 })
-export class AppModule {
-  // configure(consumer: MiddlewareConsumer) {
-  //   consumer.apply(AuthMiddleware).forRoutes('*')
-  // }
-}
+export class AppModule {}

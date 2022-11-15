@@ -18,6 +18,8 @@ export class TestService {
         width: 30
       }
     ]
+    const row = sheet.getRow(5)
+    row.getCell(1).value = 'aaa'
 
     const imageId1 = workbook.addImage({
       filename: 'uploads/images/9eddb421-7f0f-47fd-9b4c-c275f168c06a.jpeg',

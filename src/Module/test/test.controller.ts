@@ -8,4 +8,8 @@ export class TestController {
   async register(@Request() req) {
     return this.testService.testImageExcel()
   }
+  // @Post('testStaticFile')
+  // async register(@Request() req) {
+  //   return this.testService.testImageExcel()
+  // }
 }

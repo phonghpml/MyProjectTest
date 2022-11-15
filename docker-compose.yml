@@ -8,18 +8,18 @@ services:
     working_dir: /appTest
     volumes:
       - ./:/appTest
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123456
-      MYSQL_DB: story
-  mysql: 
-    image: mysql:5.7.40
-    volumes:
-      - mysql-data:/var/lib/mysql
-    environment: 
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: story
-volumes:
-  mysql-data: 
+  #   environment:
+  #     MYSQL_HOST: mysql
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: 123456
+  #     MYSQL_DB: story
+  # mysql: 
+  #   image: mysql:5.7.40
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   environment: 
+  #     MYSQL_ROOT_PASSWORD: 123456
+  #     MYSQL_DATABASE: story
+# volumes:
+#   mysql-data: 
     

@@ -6,6 +6,7 @@ import { UserModule } from './module/user/user.module'
 import { TestModule } from './module/test/test.module'
 import { MongooseModule } from '@nestjs/mongoose'
 import { StoryModule } from './module/story/story.module'
+import { ScheduleModule } from '@nestjs/schedule'
 @Module({
   imports: [
     // TypeOrmModule.forRoot(configData),
@@ -18,6 +19,7 @@ import { StoryModule } from './module/story/story.module'
         sslCert: `${process.cwd()}/X509-cert-5956132687475728034.pem`
       }
     ),
+    ScheduleModule.forRoot(),
     UserModule,
     AuthModule,
     TestModule,

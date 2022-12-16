@@ -1,11 +1,25 @@
-import { Controller, Post, Request } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
+import { ApiBearerAuth } from '@nestjs/swagger'
+import { JwtAuthGuard } from '../auth/jwt-auth.guard'
+import { CreateStoryDto } from './dto/story.dto'
 import { StoryService } from './story.service'
-
-@Controller()
+@ApiBearerAuth()
+@Controller('stories')
 export class StoryController {
   constructor(private storyService: StoryService) {}
-  @Post('createOneStory')
-  async register(@Request() req) {
-    return this.storyService.createOneStory(req.body)
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  async createStory(@Body() storyDto: CreateStoryDto) {
+    return this.storyService.createOneStory(storyDto)
+  }
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  getStories() {
+    return this.storyService.getStories()
+  }
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  getDetailStory(@Param('id') id: string) {
+    return this.storyService.getDetailStory(id)
   }
 }

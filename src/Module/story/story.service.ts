@@ -3,6 +3,7 @@ import { CreateStoryDto } from './dto/story.dto'
 import { Story, StoryDocument } from './story.schema'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
+import { User } from '../user/user.schema'
 @Injectable()
 export class StoryService {
   constructor(
@@ -19,8 +20,11 @@ export class StoryService {
   async getStories() {
     return this.storyModel.find({})
   }
-  async createOneStory(story: CreateStoryDto): Promise<Story> {
-    const createUser = await this.storyModel.create(story)
+  async createOneStory(story: CreateStoryDto, user: User): Promise<Story> {
+    const createUser = await this.storyModel.create({
+      story,
+      user
+    })
     return createUser
   }
 }

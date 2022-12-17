@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+  Request
+} from '@nestjs/common'
 import { ApiBearerAuth } from '@nestjs/swagger'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { User } from '../user/user.schema'
@@ -8,10 +16,10 @@ import { StoryService } from './story.service'
 @Controller('stories')
 export class StoryController {
   constructor(private storyService: StoryService) {}
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
-  async createStory(@Body() storyDto: CreateStoryDto, @Body() user: User) {
-    return this.storyService.createOneStory(storyDto, user)
+  async createStory(@Body() storyDto: CreateStoryDto, @Request() req: any) {
+    return this.storyService.createOneStory(storyDto, req.user?.username)
   }
   @UseGuards(JwtAuthGuard)
   @Get()

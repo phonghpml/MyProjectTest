@@ -21,12 +21,13 @@ export class AuthService {
     if (user && user.password != pass) {
       throw new Error('password is not correct')
     }
+    return user
   }
 
   async login(username: string, password: string) {
     try {
-      await this.validateUser(username, password)
-      const payload = { username: username }
+      const user = await this.validateUser(username, password)
+      const payload = { username: username, sub: user._id }
       return {
         status: 'success',
         data: {

@@ -20,10 +20,9 @@ export class StoryService {
   async getStories() {
     return this.storyModel.find({})
   }
-  async createOneStory(story: CreateStoryDto, user: User): Promise<Story> {
+  async createOneStory(story: CreateStoryDto, user: string): Promise<Story> {
     const createUser = await this.storyModel.create({
-      story,
-      user
+      story
     })
     return createUser
   }

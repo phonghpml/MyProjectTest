@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@casl/ability": "^6.3.3",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^9.0.0",
@@ -35,6 +36,7 @@
     "dotenv": "^16.0.1",
     "exceljs": "^4.3.0",
     "ip": "^1.1.8",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "mongoose": "^6.7.2",
     "mysql": "^2.18.1",

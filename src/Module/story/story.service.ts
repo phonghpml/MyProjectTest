@@ -18,12 +18,11 @@ export class StoryService {
     return story
   }
   async getStories() {
-    return this.storyModel.find({})
+    return this.storyModel.find({}).populate('author')
   }
-  async createOneStory(story: CreateStoryDto, user: string): Promise<Story> {
-    const createUser = await this.storyModel.create({
-      story
-    })
-    return createUser
+  async createOneStory(story: CreateStoryDto, userId: string): Promise<Story> {
+    story.createdBy = userId
+    console.log(story)
+    return await this.storyModel.create(story)
   }
 }

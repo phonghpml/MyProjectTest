@@ -5,9 +5,10 @@ import {
   Param,
   Post,
   UseGuards,
-  Request
+  Request,
+  Query
 } from '@nestjs/common'
-import { ApiBearerAuth } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger'
 import { UserRole } from 'src/constant/enum/user.enum'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { Roles } from '../roles/roles.decorator'
@@ -26,8 +27,10 @@ export class StoryController {
   }
   @UseGuards(JwtAuthGuard)
   @Get()
-  getStories() {
-    return this.storyService.getStories()
+  @ApiQuery({ name: 'pageNumber' })
+  @ApiQuery({ name: 'limit' })
+  getStories(@Query() query: any) {
+    return this.storyService.getStories(query)
   }
   @UseGuards(JwtAuthGuard)
   @Get(':id')

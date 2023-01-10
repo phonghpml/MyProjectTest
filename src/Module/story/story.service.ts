@@ -3,7 +3,6 @@ import { CreateStoryDto } from './dto/story.dto'
 import { Story, StoryDocument } from './story.schema'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { User } from '../user/user.schema'
 @Injectable()
 export class StoryService {
   constructor(
@@ -17,8 +16,25 @@ export class StoryService {
     })
     return story
   }
-  async getStories() {
-    return this.storyModel.find({}).populate('author')
+  async getStories(query: any) {
+    console.log(query)
+    const pageNumber = +query.pageNumber || 0
+    const limit = +query.limit || 12
+    const result: {
+      data?: any
+      totalStory?: number
+    } = {}
+    const totalStory = await this.storyModel.countDocuments().exec()
+    result.totalStory = totalStory
+    let startIndex = pageNumber * limit
+    result.data = await this.storyModel
+      .find()
+      .skip(startIndex)
+      .limit(limit)
+      .populate('author')
+      .exec()
+
+    return result
   }
   async createOneStory(story: CreateStoryDto, userId: string): Promise<Story> {
     story.createdBy = userId

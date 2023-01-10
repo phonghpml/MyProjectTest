@@ -3,6 +3,7 @@ import { Cron } from '@nestjs/schedule'
 import { Workbook } from 'exceljs'
 import { address } from 'ip'
 import * as moment from 'moment'
+import { Issuer } from 'openid-client'
 @Injectable()
 export class TestService {
   constructor() {}
@@ -40,6 +41,13 @@ export class TestService {
 
     await workbook.xlsx.writeFile(`${process.cwd()}/export/excels\/${filename}`)
     console.log(process.env.SCHEDULE)
+
+    // const googleIssuer = await Issuer.discover('http://localhost:3000/Home')
+    // console.log(
+    //   'Discovered issuer %s %O',
+    //   googleIssuer.issuer,
+    //   googleIssuer.metadata
+    // )
 
     // Requiring the lodash library
     // const _ = require('lodash')

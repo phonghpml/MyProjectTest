@@ -7,6 +7,7 @@ import { TestModule } from './module/test/test.module'
 import { MongooseModule } from '@nestjs/mongoose'
 import { StoryModule } from './module/story/story.module'
 import { ScheduleModule } from '@nestjs/schedule'
+import { TestReactModule } from './module/testReact/testReact.module'
 @Module({
   imports: [
     // TypeOrmModule.forRoot(configData),
@@ -23,7 +24,8 @@ import { ScheduleModule } from '@nestjs/schedule'
     UserModule,
     AuthModule,
     TestModule,
-    StoryModule
+    StoryModule,
+    TestReactModule
   ],
   controllers: [AppController],
   providers: [AppService]

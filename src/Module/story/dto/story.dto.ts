@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import mongoose from 'mongoose'
 
 export class CreateStoryDto {
   @ApiProperty()

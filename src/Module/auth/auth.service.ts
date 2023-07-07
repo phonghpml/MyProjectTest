@@ -9,12 +9,13 @@ export class AuthService {
   constructor(
     private userService: UserService,
     private jwtService: JwtService
-  ) {}
+  ) { }
 
   async validateUser(username: string, pass: string): Promise<any> {
     console.log(username)
     console.log(pass)
     const user: User = await this.userService.getUser(username)
+    console.log('user...1', user)
     if (!user) {
       throw new Error('username is not correct')
     }

@@ -3,14 +3,13 @@ import { User, UserDocument } from './user.schema'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { CreateUserDto } from './dto/user.dto'
+import { filter } from 'rxjs'
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
   async getUser(username: string) {
     const user = await this.userModel.findOne({
-      where: {
-        name: username
-      }
+      username: username
     })
     return user
   }

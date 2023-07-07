@@ -12,12 +12,12 @@ import { TestReactModule } from './module/testReact/testReact.module'
   imports: [
     // TypeOrmModule.forRoot(configData),
     MongooseModule.forRoot(
-      `mongodb+srv://cluster0.r52erkw.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority`,
+      `mongodb+srv://cluster0.oasdw8b.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority`,
       {
         ssl: true,
         sslValidate: true,
-        sslKey: `${process.cwd()}/X509-cert-5956132687475728034.pem`,
-        sslCert: `${process.cwd()}/X509-cert-5956132687475728034.pem`
+        sslKey: `${process.cwd()}/X509-cert-129352156445574575.pem`,
+        sslCert: `${process.cwd()}/X509-cert-129352156445574575.pem`
       }
     ),
     ScheduleModule.forRoot(),

@@ -44,4 +44,34 @@ export class AuthService {
       }
     }
   }
+
+  async infoUser(jwt?: string) {
+    try {
+      if (jwt) {
+        console.log(jwt, 'jwt')
+        const data = this.jwtService.verify(jwt)
+        console.log(data, 'data...............')
+        return {
+          status: 'success',
+          data: {
+            user: data
+          },
+          message: null
+        }
+      }
+      else {
+        return {
+          status: 'error',
+          data: null,
+          message: 'Not a user'
+        }
+      }
+    } catch (error) {
+      return {
+        status: 'error',
+        data: null,
+        message: 'Not a user'
+      }
+    }
+  }
 }

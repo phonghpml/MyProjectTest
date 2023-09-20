@@ -36,6 +36,7 @@
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.1",
     "exceljs": "^4.3.0",
+    "faker": "^6.6.6",
     "ip": "^1.1.8",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
@@ -56,6 +57,7 @@
     "webpack": "^5.74.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.1.0",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",

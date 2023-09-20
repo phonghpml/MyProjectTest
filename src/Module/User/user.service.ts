@@ -15,9 +15,7 @@ export class UserService {
   }
   async getDetailUser(id: string) {
     const user = await this.userModel.findOne({
-      where: {
-        id: id
-      }
+      _id: id
     })
     return user
   }

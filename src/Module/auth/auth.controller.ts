@@ -1,7 +1,7 @@
-import { Controller, Post, Body, Get } from '@nestjs/common'
+import { Body, Controller, Get, Post, Req } from '@nestjs/common'
 import { LoginDto } from '../user/dto/user.dto'
 import { AuthService } from './auth.service'
-import { getInfoUserDto } from './dto/auth.dto'
+import { Request } from 'express'
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) { }
@@ -9,8 +9,9 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto.username, loginDto.password)
   }
-  @Post('user')
-  async user(@Body() jwt: getInfoUserDto) {
-    return this.authService.infoUser(jwt.jwt)
+  @Get('isLogin')
+  async user(@Req() request: Request) {
+
+    return this.authService.infoUser(request)
   }
 }

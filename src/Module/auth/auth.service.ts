@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt'
 
 import { User } from '../user/user.schema'
 import { UserService } from '../user/user.service'
+import { Request } from 'express'
 
 @Injectable()
 export class AuthService {
@@ -45,7 +46,8 @@ export class AuthService {
     }
   }
 
-  async infoUser(jwt?: string) {
+  async infoUser(request: Request) {
+    const jwt = request.header('authorization')
     try {
       if (jwt) {
         console.log(jwt, 'jwt')

@@ -1,7 +1,7 @@
 import { ApiProperty, PickType } from '@nestjs/swagger'
 import { UserRole } from 'src/constant/enum/user.enum'
 
-export class CreateUserDto {
+export class CreateOneUserDto {
   @ApiProperty()
   username: string
 
@@ -21,7 +21,9 @@ export class CreateUserDto {
   type: UserRole
 }
 
-export class LoginDto extends PickType(CreateUserDto, [
+export class LoginDto extends PickType(CreateOneUserDto, [
   'username',
   'password'
-]) {}
+]) { }
+
+

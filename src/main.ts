@@ -17,10 +17,12 @@ async function bootstrap() {
       .setVersion('1.0')
       .addTag('web')
       .build()
-    const document = SwaggerModule.createDocument(app, config)
+    const document = SwaggerModule.createDocument(app, config, {
+      extraModels: []
+    })
     SwaggerModule.setup('api', app, document, {
       swaggerOptions: {
-        persistAuthorization: true
+        persistAuthorization: true,
       }
     })
     app.use(logger)

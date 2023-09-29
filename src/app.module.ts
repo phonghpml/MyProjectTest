@@ -5,7 +5,6 @@ import { AuthModule } from './module/auth/auth.module'
 import { UserModule } from './module/user/user.module'
 import { MongooseModule } from '@nestjs/mongoose'
 import { StoryModule } from './module/story/story.module'
-import { ScheduleModule } from '@nestjs/schedule'
 @Module({
   imports: [
     MongooseModule.forRoot(
@@ -17,7 +16,6 @@ import { ScheduleModule } from '@nestjs/schedule'
         sslCert: `${process.cwd()}/X509-cert-129352156445574575.pem`
       }
     ),
-    ScheduleModule.forRoot(),
     UserModule,
     AuthModule,
     StoryModule,

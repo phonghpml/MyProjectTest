@@ -6,13 +6,16 @@ export class CreateUserDto {
   username: string
 
   @ApiProperty()
-  age: number
+  age: string
 
   @ApiProperty()
   password: string
 
   @ApiProperty()
   phoneNumber: string
+
+  @ApiProperty()
+  email: string
 
   @ApiProperty({ type: () => UserRole, enum: UserRole, enumName: 'UserRole' })
   type: UserRole

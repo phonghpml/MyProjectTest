@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
-import { User, UserDocument } from './user.schema'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { CreateUserDto } from './dto/user.dto'
-import { filter } from 'rxjs'
+import { User, UserDocument } from './user.schema'
+import { Request } from 'express'
 @Injectable()
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
@@ -25,5 +25,9 @@ export class UserService {
   async createOneUser(user: CreateUserDto): Promise<User> {
     const createUser = await this.userModel.create(user)
     return createUser
+  }
+  async getMe(req: Request) {
+    const token = req.header('authorization')
+    console.log(token, 'token')
   }
 }
